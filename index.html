@@ -40,6 +40,52 @@
 
     <div id="vcard-container"></div>
 
-    <script src="script.js"></script>
+    <script>
+      const form = document.querySelector('form');
+const vcardContainer = document.getElementById('vcard-container');
+const downloadBtn = document.getElementById('download-btn');
+const joinGroupBtn = document.getElementById('join-group-btn');
+let submittedEntries = 0;
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  if (form.checkValidity() === false) {
+    event.stopPropagation();
+  } else {
+    submittedEntries++;
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const vcard = generateVCard(name, phone);
+    vcardContainer.innerHTML = vcard;
+    form.reset();
+    alert(`Wow, you have submitted your details successfully to Silva VCF! You are entry number ${submittedEntries}`);
+  }
+
+  form.classList.add('was-validated');
+});
+
+downloadBtn.addEventListener('click', function() {
+  const vcardBlob = new Blob([vcardContainer.innerHTML], { type: 'text/vcard' });
+  const url = URL.createObjectURL(vcardBlob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'contacts.vcf';
+  a.click();
+});
+
+joinGroupBtn.addEventListener('click', function() {
+  // Add join group functionality here
+});
+
+function generateVCard(name, phone) {
+  return `BEGIN:VCARD
+VERSION:3.0
+N:${name};;Mr.;;
+FN:${name}
+TEL;TYPE=CELL:${phone}
+END:VCARD`;
+  }
+    </script>
   </body>
 </html>
