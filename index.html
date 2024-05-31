@@ -1,91 +1,45 @@
-<!-- HTML code -->
 <!DOCTYPE html>
 <html>
-<head>
-  <title>VCard Generator</title>
-  <style>
-    /* Customize button styles */
-    button {
-      background-color: #4CAF50;
-      color: #ffffff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #3e8e41;
-    }
-    #submit-btn {
-      background-color: #008000;
-    }
-    #download-btn {
-      background-color: #0066cc;
-    }
-    #join-group-btn {
-      background-color: #ff9900;
-    }
-  </style>
-</head>
-<body>
-  <h1>VCard Generator</h1>
-  <form id="vcard-form">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name"><br><br>
-    <label for="phone">Phone Number (International Format):</label>
-    <input type="text" id="phone" name="phone"><br><br>
-    <label for="country">Country:</label>
-    <button id="submit-btn">Submit</button>
-    <button id="download-btn">Download VCF</button>
-    <button id="join-group-btn">Join Group</button>
-  </form>
+  <head>
+    <title>VCard Generator</title>
+    <style>
+      /* Customize button styles */
+      button {
+        background-color: #4CAF50;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #3e8e41;
+      }
+      #submit-btn {
+        background-color: #008000;
+      }
+      #download-btn {
+        background-color: #0066cc;
+      }
+      #join-group-btn {
+        background-color: #ff9900;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>VCard Generator</h1>
+    <form id="vcard-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name"><br><br>
+      <label for="phone">Phone Number (International Format):</label>
+      <input type="text" id="phone" name="phone"><br><br>
+      <button id="submit-btn">Submit</button>
+      <button id="download-btn">Download VCF</button>
+      <button id="join-group-btn">Join Group</button>
+    </form>
 
-  <div id="vcard-container"></div>
+    <div id="vcard-container"></div>
 
-  <script>
-    // JavaScript code (script.js)
-let vcardData = [];
-let vcardString = "";
-
-document.getElementById("submit-btn").addEventListener("click", (e) => {
-  e.preventDefault();
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let country = document.getElementById("country").value;
-  vcardData.push({ name, phone, country });
-  document.getElementById("name").value = "";
-  document.getElementById("phone").value = "";
-  document.getElementById("country").value = "";
-  generateVCard();
-});
-
-document.getElementById("download-btn").addEventListener("click", (e) => {
-  e.preventDefault();
-  let blob = new Blob([vcardString], { type: "text/vcard" });
-  let url = URL.createObjectURL(blob);
-  let a = document.createElement("a");
-  a.href = url;
-  a.download = "silvavcf.vcf";
-  a.click();
-});
-
-document.getElementById("join-group-btn").addEventListener("click", (e) => {
-  e.preventDefault();
-  // Add join group functionality here
-});
-
-function generateVCard() {
-  vcardString = "";
-  for (let i = 0; i < vcardData.length; i++) {
-    vcardString += `BEGIN:VCARD\n`;
-    vcardString += `VERSION:3.0\n`;
-    vcardString += `FN:${vcardData[i].name}\n`;
-    vcardString += `TEL;TYPE=cell:${vcardData[i].phone}\n`;
-    vcardString += `COUNTRY:${vcardData[i].country}\n`;
-    vcardString += `END:VCARD\n`;
-  }
-  document.getElementById("vcard-container").innerHTML = "";
-                                                       }
-  </script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
