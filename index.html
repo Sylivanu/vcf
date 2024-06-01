@@ -1,91 +1,102 @@
+<!-- index.html -->
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>VCard Generator</title>
-    <style>
-      /* Customize button styles */
-      button {
-        background-color: #4CAF50;
-        color: #ffffff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-      button:hover {
-        background-color: #3e8e41;
-      }
-      #submit-btn {
-        background-color: #008000;
-      }
-      #download-btn {
-        background-color: #0066cc;
-      }
-      #join-group-btn {
-        background-color: #ff9900;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>VCard Generator</h1>
-    <form id="vcard-form">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name"><br><br>
-      <label for="phone">Phone Number (International Format):</label>
-      <input type="text" id="phone" name="phone"><br><br>
-      <button id="submit-btn">Submit</button>
-      <button id="download-btn">Download VCF</button>
-      <button id="join-group-btn">Join Group</button>
-    </form>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silva Tech Website</title>
+    <styles>
+      /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-    <div id="vcard-container"></div>
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
 
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #ccc;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+section {
+    background-color: #f7f7f7;
+    padding: 2em;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+    </styles>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h1>Welcome to Silva Tech</h1>
+            <p>This is the home page.</p>
+        </section>
+        <section id="about">
+            <h1>About Us</h1>
+            <p>This is the about page.</p>
+        </section>
+        <section id="services">
+            <h1>Our Services</h1>
+            <p>This is the services page.</p>
+        </section>
+        <section id="contact">
+            <h1>Contact Us</h1>
+            <p>This is the contact page.</p>
+        </section>
+    </main>
     <script>
-      const form = document.querySelector('form');
-const vcardContainer = document.getElementById('vcard-container');
-const downloadBtn = document.getElementById('download-btn');
-const joinGroupBtn = document.getElementById('join-group-btn');
-let submittedEntries = 0;
+      // script.js
+const navLinks = document.querySelectorAll('nav a');
 
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
-
-  if (form.checkValidity() === false) {
-    event.stopPropagation();
-  } else {
-    submittedEntries++;
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const vcard = generateVCard(name, phone);
-    vcardContainer.innerHTML = vcard;
-    form.reset();
-    alert(`Wow, you have submitted your details successfully to Silva VCF! You are entry number ${submittedEntries}`);
-  }
-
-  form.classList.add('was-validated');
+navLinks.forEach(link => {
+    link.addEventListener('click', event => {
+        event.preventDefault();
+        const targetId = link.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        targetSection.scrollIntoView({ behavior: 'mooth' });
+    });
 });
-
-downloadBtn.addEventListener('click', function() {
-  const vcardBlob = new Blob([vcardContainer.innerHTML], { type: 'text/vcard' });
-  const url = URL.createObjectURL(vcardBlob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'contacts.vcf';
-  a.click();
-});
-
-joinGroupBtn.addEventListener('click', function() {
-  // Add join group functionality here
-});
-
-function generateVCard(name, phone) {
-  return `BEGIN:VCARD
-VERSION:3.0
-N:${name};;Mr.;;
-FN:${name}
-TEL;TYPE=CELL:${phone}
-END:VCARD`;
-  }
     </script>
-  </body>
-</html>
+</body>
+          </html>
