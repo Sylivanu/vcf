@@ -96,7 +96,32 @@ li.active {
   </nav>
 </div>
     <script>
-        
+        const content = document.querySelector('.content');
+const listItems = document.querySelectorAll('li');
+const sources = [
+  'https://codetheworld.io/wp-content/uploads/2024/06/home.jpeg',
+  'https://codetheworld.io/wp-content/uploads/2024/06/work.jpeg',
+  'https://codetheworld.io/wp-content/uploads/2024/06/blog.jpeg',
+  'https://codetheworld.io/wp-content/uploads/2024/06/about.jpeg',
+];
+
+function hideAllItems() {
+  listItems.forEach((item) => {
+    item.classList.remove('active');
+  });
+}
+
+listItems.forEach((item, idx) => {
+  item.addEventListener(
+    'click',
+    () => {
+      hideAllItems();
+
+      item.classList.add('active');
+      content.style.backgroundImage = `url(${sources[idx]})`;
+    },
+  );
+});
     </script>
 </body>
     </html>
