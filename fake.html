@@ -1,151 +1,143 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fake Instagram Profile</title>
-    <link rel="stylesheet" href="styles.css">
-  <style>
-    /* styles.css */
+    <title>Instagram Login</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* style.css */
+        @import url('https://use.fontawesome.com/releases/v6.5.2/css/all.css');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+        
+        body {
+          background-color: #eee;
+          font-family: "Montserrat", sans-serif;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          overflow: hidden;
+          margin: 0;
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
+        .content {
+          width: 100%;
+          height: calc(100% - 60px);
+          position: absolute;
+          inset: 0;
+          background-image: url('https://codetheworld.io/wp-content/uploads/2024/06/home.jpeg');
+          background-position: center;
+          background-size: cover;
+          transition: .3s background ease-out;
+        }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 1em;
-    text-align: center;
-}
+        nav {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          margin-top: -5px;
+          width: 100%;
+        }
 
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-}
+        ul {
+          background-color: #fff;
+          display: flex;
+          list-style-type: none;
+          padding: 0;
+          margin: 0;
+          height: 60px;
+        }
 
-nav li {
-    margin-right: 20px;
-}
+        li {
+          color: #777;
+          cursor: pointer;
+          flex: 1;
+          padding: 10px;
+          text-align: center;
+          transition: none;
+        }
 
-nav a {
-    color: #fff;
-    text-decoration: none;
-}
+        li p {
+          font-size: 12px;
+          margin: 2px 0;
+          transition: none;
+        }
 
-.profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2em;
-}
+        li.active {
+          color: #c7b0c3;
+          font-weight: 900;
+        }
 
-.profile img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
+        .section {
+          display: none;
+        }
 
-.profile h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.profile p {
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-
-.profile ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-}
-
-.profile li {
-    margin-right: 20px;
-}
-
-.posts {
-    padding: 2em;
-}
-
-.posts h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.posts ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.posts li {
-    margin-bottom: 20px;
-}
-
-.posts img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 1em;
-    text-align: center;
-    clear: both;
-    }
-  </style>
+        .section.active {
+          display: block;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">Log in</a></li>
-                <li><a href="#">Sign up</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="profile">
-            <img src="profile-pic.jpg" alt="Profile Picture">
-            <h1>Username</h1>
-            <p>Bio</p>
-            <ul>
-                <li><span>Posts: </span>10</li>
-                <li><span>Followers: </span>100</li>
-                <li><span>Following: </span>50</li>
-            </ul>
-        </section>
-        <section class="posts">
-            <h2>Posts</h2>
-            <ul>
-                <li>
-                    <img src="post1.jpg" alt="Post 1">
-                    <p>Caption 1</p>
-                </li>
-                <li>
-                    <img src="post2.jpg" alt="Post 2">
-                    <p>Caption 2</p>
-                </li>
-            </ul>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Fake Instagram</p>
-    </footer>
+<div class="container">
+  <div class="content">
+    <div class="section home active">
+      <h1>Welcome to Home</h1>
+      <p>This is the home page.</p>
+    </div>
+    <div class="section work">
+      <h1>Work</h1>
+      <p>Anyone can connect with their audience through blogging and enjoy the myriad benefits that blogging provides: organic traffic from search engines, promotional content for social media, and recognition from a new audience you haven’t tapped into yet.</p>
+    </div>
+    <div class="section blog">
+      <h1>How to Write a Blog Post: A Step-by-Step Guide</h1>
+      <p>If you’ve ever read a blog post, you’ve consumed content from a thought leader that is an expert in their industry. Chances are if the blog post was written effectively, you came away with helpful knowledge and a positive opinion about the writer or brand that produced the content.</p>
+      <p>Let's get started with an important question.</p>
+      <h2>What is a blog post?</h2>
+      <p>A blog post is any article, news piece, or guide that's published in the blog section of a website. A blog post typically covers a specific topic or query, is educational in nature, ranges from 600 to 2,000+ words, and contains other media types such as images, videos, infographics, and interactive charts.</p>
+    </div>
+    <div class="section about">
+      <h1>About Us</h1>
+      <p>Insert about us content here.</p>
+    </div>
+  </div>
+  <nav>
+    <ul>
+      <li class="active">
+        <i class="fa-solid fa-house"></i>
+        <p>Home</p>
+      </li>
+      <li>
+        <i class="fa-solid fa-box"></i>
+        <p>Work</p>
+      </li>
+      <li>
+        <i class="fa-solid fa-book-open"></i>
+        <p>Blog</p>
+      </li>
+      <li>
+        <i class="fa-solid fa-users"></i>
+        <p>About us</p>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<script>
+  const content = document.querySelector('.content');
+  const listItems = document.querySelectorAll('li');
+  const sections = document.querySelectorAll('.section');
+
+  listItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      listItems.forEach(item => item.classList.remove('active'));
+      item.classList.add('active');
+
+      sections.forEach(section => section.classList.remove('active'));
+      sections[index].classList.add('active');
+    });
+  });
+</script>
 </body>
 </html>
