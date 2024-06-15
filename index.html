@@ -4,76 +4,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram Login</title>
+    <title>silva web</title>
     <link rel="stylesheet" href="style.css">
     <style>
         /* style.css */
-@import url('https://use.fontawesome.com/releases/v6.5.2/css/all.css');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+        @import url('https://use.fontawesome.com/releases/v6.5.2/css/all.css');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
         
-body {
-  background-color: #eee;
-  font-family: "Montserrat", sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
-}
+        body {
+          background-color: #eee;
+          font-family: "Montserrat", sans-serif;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          overflow: hidden;
+          margin: 0;
+        }
 
-.content {
-  width: 100%;
-  height: calc(100% - 60px);
-  position: absolute;
-  inset: 0;
-  background-image: url('https://codetheworld.io/wp-content/uploads/2024/06/home.jpeg');
-  background-position: center;
-  background-size: cover;
-  transition: .3s background ease-out;
-}
+        .content {
+          width: 100%;
+          height: calc(100% - 60px);
+          position: absolute;
+          inset: 0;
+          background-image: url('https://codetheworld.io/wp-content/uploads/2024/06/home.jpeg');
+          background-position: center;
+          background-size: cover;
+          transition: .3s background ease-out;
+        }
 
-nav {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin-top: -5px;
-  width: 100%;
-}
+        nav {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          margin-top: -5px;
+          width: 100%;
+        }
 
-ul {
-  background-color: #fff;
-  display: flex;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  height: 60px;
-}
+        ul {
+          background-color: #fff;
+          display: flex;
+          list-style-type: none;
+          padding: 0;
+          margin: 0;
+          height: 60px;
+        }
 
-li {
-  color: #777;
-  cursor: pointer;
-  flex: 1;
-  padding: 10px;
-  text-align: center;
-  transition: none;
-}
+        li {
+          color: #777;
+          cursor: pointer;
+          flex: 1;
+          padding: 10px;
+          text-align: center;
+          transition: none;
+        }
 
-li p {
-  font-size: 12px;
-  margin: 2px 0;
-  transition: none;
-}
+        li p {
+          font-size: 12px;
+          margin: 2px 0;
+          transition: none;
+        }
 
-li.active {
-  color: #c7b0c3;
-  font-weight: 900;
-}
+        li.active {
+          color: #c7b0c3;
+          font-weight: 900;
+        }
+
+        .section {
+          display: none;
+        }
+
+        .section.active {
+          display: block;
+        }
     </style>
 </head>
 <body>
 <div class="container">
-  <div class="content"></div>
+  <div class="content">
+    <div class="section home active">
+      <h1>Welcome to Home</h1>
+      <p>This is the home page.</p>
+    </div>
+    <div class="section work">
+      <h1>Work</h1>
+      <p>Anyone can connect with their audience through blogging and enjoy the myriad benefits that blogging provides: organic traffic from search engines, promotional content for social media, and recognition from a new audience you haven’t tapped into yet.</p>
+    </div>
+    <div class="section blog">
+      <h1>How to Write a Blog Post: A Step-by-Step Guide</h1>
+      <p>If you’ve ever read a blog post, you’ve consumed content from a thought leader that is an expert in their industry. Chances are if the blog post was written effectively, you came away with helpful knowledge and a positive opinion about the writer or brand that produced the content.</p>
+      <p>Let's get started with an important question.</p>
+      <h2>What is a blog post?</h2>
+      <p>A blog post is any article, news piece, or guide that's published in the blog section of a website. A blog post typically covers a specific topic or query, is educational in nature, ranges from 600 to 2,000+ words, and contains other media types such as images, videos, infographics, and interactive charts.</p>
+    </div>
+    <div class="section about">
+      <h1>About Us</h1>
+      <p>Insert about us content here.</p>
+    </div>
+  </div>
   <nav>
     <ul>
       <li class="active">
@@ -95,33 +123,21 @@ li.active {
     </ul>
   </nav>
 </div>
-    <script>
-        const content = document.querySelector('.content');
-const listItems = document.querySelectorAll('li');
-const sources = [
-  'https://codetheworld.io/wp-content/uploads/2024/06/home.jpeg',
-  'https://codetheworld.io/wp-content/uploads/2024/06/work.jpeg',
-  'https://codetheworld.io/wp-content/uploads/2024/06/blog.jpeg',
-  'https://codetheworld.io/wp-content/uploads/2024/06/about.jpeg',
-];
 
-function hideAllItems() {
-  listItems.forEach((item) => {
-    item.classList.remove('active');
-  });
-}
+<script>
+  const content = document.querySelector('.content');
+  const listItems = document.querySelectorAll('li');
+  const sections = document.querySelectorAll('.section');
 
-listItems.forEach((item, idx) => {
-  item.addEventListener(
-    'click',
-    () => {
-      hideAllItems();
-
+  listItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      listItems.forEach(item => item.classList.remove('active'));
       item.classList.add('active');
-      content.style.backgroundImage = `url(${sources[idx]})`;
-    },
-  );
-});
-    </script>
+
+      sections.forEach(section => section.classList.remove('active'));
+      sections[index].classList.add('active');
+    });
+  });
+</script>
 </body>
-    </html>
+</html>
