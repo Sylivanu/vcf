@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,7 +105,7 @@ body {
   background-size: cover;
   background-color: #151212;
   display: inline-block;
-  transition: 0.5s;
+transition: 0.5s;
 }
 
 .item:nth-child(1),
@@ -148,11 +147,11 @@ body {
   display: none;
 }
 
-.item:nth-child(2) .content {
+.item:nth-child(2).content {
   display: block;
 }
 
-.content .name {
+.content.name {
   font-size: 45px;
   text-transform: uppercase;
   font-weight: 400;
@@ -160,7 +159,7 @@ body {
   animation: animate 1s ease-in-out 1 forwards;
 }
 
-.content .des {
+.content.des {
   margin-top: 10px;
   margin-bottom: 20px;
   font-size: 16px;
@@ -252,7 +251,7 @@ button {
       </div>
     </div>
 
-    <div class="item" style="background-image: url(https://wutheringwaves.kurogames.com/website-preface/assets/super_anke-968ed264.png);">
+    <divclass="item" style="background-image: url(https://wutheringwaves.kurogames.com/website-preface/assets/super_anke-968ed264.png);">
       <div class="content">
         <div class="name">Encore</div>
         <div class="des">
@@ -308,23 +307,23 @@ button {
   const content = document.querySelector('.content');
   const listItems = document.querySelectorAll('li');
   const sections = document.querySelectorAll('.section');
-const nextButton = document.querySelector('.next');
-const prevButton = document.querySelector('.prev');
+  const nextButton = document.querySelector('.next');
+  const prevButton = document.querySelector('.prev');
+  const items = document.querySelectorAll('.item');
+  let currentItem = 0;
 
-    nextButton.addEventListener(
-  'click',
-  () => {
-    const items = document.querySelectorAll('.item');
-    document.querySelector('.slide').appendChild(items[0]);
-  },
-);
+  nextButton.addEventListener('click', () => {
+    items[currentItem].classList.remove('active');
+    currentItem = (currentItem + 1) % items.length;
+    items[currentItem].classList.add('active');
+  });
 
-prevButton.addEventListener(
-  'click',
-  () => {
-    const items = document.querySelectorAll('.item');
-    document.querySelector('.slide').prepend(items[items.length - 1]);
-    
+  prevButton.addEventListener('click', () => {
+    items[currentItem].classList.remove('active');
+    currentItem = (currentItem - 1 + items.length) % items.length;
+    items[currentItem].classList.add('active');
+  });
+
   listItems.forEach((item, index) => {
     item.addEventListener('click', () => {
       listItems.forEach(item => item.classList.remove('active'));
@@ -334,10 +333,6 @@ prevButton.addEventListener(
       sections[index].classList.add('active');
     });
   });
-    
-
-  },
-);
 </script>
 </body>
-</html>
+    </html>
