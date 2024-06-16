@@ -308,20 +308,10 @@ button {
   const content = document.querySelector('.content');
   const listItems = document.querySelectorAll('li');
   const sections = document.querySelectorAll('.section');
-
-  listItems.forEach((item, index) => {
-    item.addEventListener('click', () => {
-      listItems.forEach(item => item.classList.remove('active'));
-      item.classList.add('active');
-
-      sections.forEach(section => section.classList.remove('active'));
-      sections[index].classList.add('active');
-    });
-  });
-    const nextButton = document.querySelector('.next');
+const nextButton = document.querySelector('.next');
 const prevButton = document.querySelector('.prev');
 
-nextButton.addEventListener(
+    nextButton.addEventListener(
   'click',
   () => {
     const items = document.querySelectorAll('.item');
@@ -334,6 +324,18 @@ prevButton.addEventListener(
   () => {
     const items = document.querySelectorAll('.item');
     document.querySelector('.slide').prepend(items[items.length - 1]);
+    
+  listItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      listItems.forEach(item => item.classList.remove('active'));
+      item.classList.add('active');
+
+      sections.forEach(section => section.classList.remove('active'));
+      sections[index].classList.add('active');
+    });
+  });
+    
+
   },
 );
 </script>
